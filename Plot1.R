@@ -1,0 +1,15 @@
+getwd()
+setwd("D:/RStudio")
+data_full <- read.csv("household_power_consumption.txt", sep = ";", na.strings="?")
+head(data_full)
+names(data_full)
+nrow(data_full)
+data1 <- subset(data_full, Date %in% c("1/2/2007","2/2/2007"))
+data1$Date <- as.Date(data1$Date, format="%d/%m/%Y")
+hist(data1$Global_active_power,col = "red", xlab = "Global Active Powe (kilowatts)",ylab = "Frequency", main = "Global Active Power")
+
+data1$Date <- as.Date(data1$Date, format="%d/%m/%Y")
+png("plot1.png", width=480, height=480)
+hist(data1$Global_active_power,col = "red", xlab = "Global Active Powe (kilowatts)",ylab = "Frequency", main = "Global Active Power")
+dev.off()
+
